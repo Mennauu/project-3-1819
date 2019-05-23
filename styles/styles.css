@@ -1,0 +1,308 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Nunito Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+small {
+  font-size: 70%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.nav-tabs {
+  border: 0;
+}
+
+.nav-tabs .nav-item .active {
+  border-bottom: 4px solid #63ccff;
+  font-weight: bolder;
+}
+
+.nav-tabs .nav-link {
+  border: 0;
+  color: rgba(0,0,0,.5);
+  padding: 0;
+  margin-top: 1.5em;
+  padding-bottom: 1em;
+  display: block;
+  margin-left: 2em;
+}
+
+.nav-tabs .nav-item:first-of-type .nav-link {
+  margin-left: 0;
+}
+
+.navbar-brand span {
+  margin-top: 0.35em;
+  margin-left: 0.25em;
+}
+
+.navbar-brand {
+  padding: .3125em 0.5em .3125em .3125em;
+  border-radius: 3px;
+}
+
+.navbar-brand img {
+  max-width: 30px;
+}
+
+.active .nav-link {
+  font-weight: bolder;
+}
+
+.dropdown-toggle::after {
+  vertical-align: .07em;
+}
+
+.rounded {
+  border-radius: 3px !important;
+}
+
+.form-control {
+  border: 0;
+  border-radius: 3px;
+}
+
+.bg-black {
+  background-color: #000 !important;
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
+
+.card a {
+  color: #000;
+}
+
+.card a:hover {
+  text-decoration: none;
+}
+
+.card {
+  transition: 0.2s;
+}
+
+.card:hover {
+  transition: 0.2s;
+  transform: translateY(-8px)
+}
+
+.d-flex .card {
+  flex: 1 0 21%;
+  margin: 0.5em;
+  border: 0;
+}
+
+@media (max-width: 992px) { 
+  .d-flex .card {
+    flex: 1 0 45%;
+  }
+}
+
+@media (max-width: 576px) { 
+  .d-flex .card {
+    flex: 1 0 100%;
+    margin: 0 0 1em 0;
+  }
+
+
+  .card:hover {
+    transform: translateY(-4px)
+  }
+}
+
+.end {
+  margin-left: auto;
+  line-height: 68px;
+}
+
+.navbar-expand .navbar-nav .nav-link {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.button-image {
+  height: 1em;
+  margin-right: .5em;
+}
+
+.bg-gray {
+  background-color: #d9d9d9 !important;
+}
+
+.bg-gray-light {
+  background-color: #e8e8e8 !important;
+}
+
+.badge-pink,
+.bg-pink {
+  background-color: #ef5777 !important;
+}
+
+.badge {
+  border-radius: 2.5px !important;
+}
+
+.badge-green,
+.badge-yellow,
+.badge-purple,
+.badge-pink {
+  color: #fff;
+}
+
+.badge-purple {
+  background-color: #575fcf !important;
+}
+
+.badge-yellow {
+  background-color: #ffb142 !important;
+}
+
+.badge-green {
+  background-color: #218c74 !important;
+}
+
+.hyphens {
+  hyphens: auto;
+}
+
+.sort-select {
+  outline: 0;
+  background-color: transparent;
+  border: 0;
+}
+
+@media (max-width: 850.98px) { 
+  .hidden-lg {
+    display: none !important;
+  }
+ }
+
+ @media (min-width: 670.99px) { 
+   .hid-md {
+     display: none;
+   }
+
+   .searchForm {
+     padding: .5rem;
+     margin-left: .5rem;
+     margin-right: .5rem;
+     background-color: #fff;
+   }
+ }
+
+ @media (max-width: 670.98px) { 
+  .hidden-md {
+    display: none !important;
+  }
+  .full-width {
+    display: block !important;
+    width: 100%;
+  }
+
+  main {
+    position: relative;
+  }
+
+  .resultForm {
+    margin-top: 3.5em;
+  }
+
+  .searchForm {
+    position: absolute;
+    top: 1.5em;
+    margin-top: 1em;
+    width: calc(100% - 2em);
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent;
+  }
+
+ }
+
+@media (max-width: 575.98px) {
+  .hidden-sm {
+    display: none !important;
+  }
+
+  .button-image {
+    margin-right: 0;
+  }
+
+  .navbar-brand {
+    margin-right: 0;
+  }
+
+  .navbar-expand .navbar-nav .nav-link {
+    padding-left: 0.5em !important;
+    padding-right: 0.5em !important;
+  }
+
+
+}
+
+.w100 {
+  width: 100%;
+}
+
+.large-small {
+  font-size: 80%;
+}
+
+#add-new-modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: calc(100% - 2em);
+  max-width: 400px;
+  border-radius: 5px;
+  min-height: 200px;
+  background-color: #fff;
+  border: 2px solid gray;
+  visibility: hidden;
+  z-index: 10;
+  padding: 1em;
+  margin-top: -2em;
+}
+
+#darkness {
+  background: rgba(0,0,0,.5);
+  min-height: 100vh;
+  height: 100%;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  display: none;
+}
+
+.close {
+  cursor: pointer;
+  padding: .3em;
+}
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+textarea {
+  font-size: 16px;
+}

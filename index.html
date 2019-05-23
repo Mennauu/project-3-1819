@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jiskefet</title>
+    <meta name="description" content="Review data and create logs from Alica">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+
+  <body class="bg-light">
+    <header class="navbar navbar-expand navbar-light bg-white bg-dark py-3 pl-2 pr-3">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="assets/logo.png" alt="logo" class="d-inline-block align-top">
+          <!-- <span class="d-inline-block">Jiskefet</span> -->
+        </a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Logs
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">All logs <span class="sr-only">(current)</span></a>
+              <a class="dropdown-item" href="#">Add new</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Runs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Subsystems</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav flex-row ml-auto d-flex">
+          <li class="nav-item dropdown">
+            <a class="nav-item nav-link dropdown-toggle mr-2" href="#" id="bd-versions" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg" viewBox="0 0 512 499.36" role="img"
+                focusable="false">
+                <title>GitHub</title>
+                <path fill="currentColor" fill-rule="evenodd"
+                  d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                </path>
+              </svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <a class="dropdown-item" href="/docs/4.3/">Signed in as<br><strong>Mennauu</strong></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://getbootstrap.com/docs/4.2/">Your Profile</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/">Tokens</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/">API docs</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">Sign out</a>
+              <div class="dropdown-divider"></div>
+              <small class="dropdown-item"><strong>Jiskefet v.0.1.0</strong></small>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="bg-white pt-3 px-3">
+      <div class="container-fluid p-0">
+        <h1>Logs</h1>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">All logs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Human</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Process</a>
+          </li>
+          <li class="nav-item end">
+            <button class="btn btn-primary d-inline-block" id="add-new-button">
+              <img src="assets/add_log.svg" alt="Add log" class="button-image"><span class="hidden-sm">Add
+                new</span>
+            </button>
+            <button class="btn btn-light bg-gray-light d-inline-block">
+              <img src="assets/filter.svg" alt="Filter" class="button-image" style="margin-right: 0;">
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <main class="py-3 px-3">
+      <div class="container-fluid px-0">
+        <div class="d-flex full-width">
+          <div class="d-flex align-items-center resultForm">
+            <strong class="text-dark">206 Results</strong>
+            <small class="px-3 hidden-md">|</small>
+            <small class="ml-auto">Sort on:</small>
+            <small>
+              <select class="sort-select font-weight-bold">
+                <option>Id number (high - low)</option>
+                <option>Id number (low - high)</option>
+                <option>Timestamp (new - old)</option>
+                <option>Timestamp (old - new)</option>
+                <option>Author (alphabetical)</option>
+              </select>
+            </small>
+          </div>
+          <div class="ml-auto d-flex full-width">
+            <form class="rounded searchForm">
+              <div class="m-0 d-flex align-items-center">
+                <label for="directSearch" class="col-form-label-sm mr-2 mb-0 hidden-md" style="min-width: 86px;">Direct
+                  search</label>
+                <input type="text" class="form-control form-control-sm bg-gray-light overflow-hidden hidden-md"
+                  id="directSearch" aria-describedby="directSearch" placeholder="id, title, description...">
+                <input type="text" class="form-control form-control-sm bg-gray-light overflow-hidden hid-md"
+                  id="directSearch" aria-describedby="directSearch" placeholder="&#128269; Search">
+              </div>
+            </form>
+            <div class="pagination-block rounded p-2 bg-white d-flex align-items-center hidden-lg">
+              <label for="pageSize" class="col-form-label-sm mr-2 mb-0">Results per page</label>
+              <select id="pageSize" name="pageSize"
+                class="form-control form-control-sm undefined bg-gray-light overflow-hidden"
+                style="min-width: 70px; max-width: 70px;">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="8" selected>8</option>
+                <option value="16">16</option>
+                <option value="32">32</option>
+                <option value="64">64</option>
+                <option value="128">128</option>
+                <option value="256">256</option>
+                <option value="512">512</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="py-3 d-flex flex-wrap">
+          <div class="card shadow-sm">
+            <a href="#">
+              <div class="card-body p-0">
+                <p class="card-text hyphens font-weight-bold p-3 m-0">Crates moved to make space for OB stave near the
+                  IB setup</p>
+                <p class="card-text bg-light p-3 m-0" style="line-height: 1;"><small class="text-secondary">Frenkie de
+                    Jong &#65381; 22:24:20
+                    30/07/2019</small>
+                </p>
+                <div class="d-flex bg-white p-3 align-items-center">
+                  <span class="badge badge-purple p-1 mr-2"><small class="large-small">Subtype</small><br>Comment</span>
+                  <span class="badge badge-green p-1 mr-2"><small class="large-small">Origin</small><br>Human</span>
+                  <span class="badge badge-dark p-1 ml-auto" style="max-height: 20px;">#985</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="card shadow-sm">
+            <a href="#">
+              <div class="card-body p-0">
+                <p class="card-text hyphens font-weight-bold p-3 m-0">VBB channels on CAEN PS switched OFF (again)</p>
+                <p class="card-text bg-light p-3 m-0" style="line-height: 1;"><small class="text-secondary">Menno de
+                    Ruiter &#65381; 22:24:20
+                    30/07/2019</small>
+                </p>
+                <div class="d-flex bg-white p-3 align-items-center">
+                  <span class="badge badge-yellow p-1 mr-2"><small class="large-small">Subtype</small><br>Run</span>
+                  <span class="badge badge-green p-1 mr-2"><small class="large-small">Origin</small><br>Human</span>
+                  <span class="badge badge-dark p-1 ml-auto" style="max-height: 20px;">#984</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="card shadow-sm">
+            <a href="#">
+              <div class="card-body p-0">
+                <p class="card-text hyphens font-weight-bold p-3 m-0">System call: 056932454332435435
+
+                </p>
+                <p class="card-text bg-light p-3 m-0" style="line-height: 1;"><small class="text-secondary">System
+                    &#65381; 22:24:20
+                    30/07/2019</small>
+                </p>
+                <div class="d-flex bg-white p-3 align-items-center">
+                  <span class="badge badge-yellow p-1 mr-2"><small class="large-small">Subtype</small><br>Run</span>
+                  <span class="badge badge-pink p-1 mr-2"><small class="large-small">Origin</small><br>Process</span>
+                  <span class="badge badge-dark p-1 ml-auto" style="max-height: 20px;">#983</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="card shadow-sm">
+            <a href="#">
+              <div class="card-body p-0">
+                <p class="card-text hyphens font-weight-bold p-3 m-0">Cable reconnection for MOSAIC test on IBSTAVE-B006
+                </p>
+                <p class="card-text bg-light p-3 m-0" style="line-height: 1;"><small class="text-secondary">Hans de
+                    Vries &#65381; 22:24:20
+                    30/07/2019</small>
+                </p>
+                <div class="d-flex bg-white p-3 align-items-center">
+                  <span class="badge badge-yellow p-1 mr-2"><small class="large-small">Subtype</small><br>Run</span>
+                  <span class="badge badge-green p-1 mr-2"><small class="large-small">Origin</small><br>Human</span>
+                  <span class="badge badge-dark p-1 ml-auto" style="max-height: 20px;">#982</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="card shadow-sm">
+            <a href="#">
+              <div class="card-body p-0">
+                <p class="card-text hyphens font-weight-bold p-3 m-0">FLP reboot for update of CRU v2.7.3 on 85:0.0 for
+                  test</p>
+                <p class="card-text bg-light p-3 m-0" style="line-height: 1;"><small class="text-secondary">Anton van
+                    Oranje &#65381; 22:24:20
+                    30/07/2019</small>
+                </p>
+                <div class="d-flex bg-white p-3 align-items-center">
+                  <span class="badge badge-yellow p-1 mr-2"><small class="large-small">Subtype</small><br>Run</span>
+                  <span class="badge badge-green p-1 mr-2"><small class="large-small">Origin</small><br>Human</span>
+                  <span class="badge badge-dark p-1 ml-auto" style="max-height: 20px;">#981</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="card shadow-sm">
+            <a href="#">
+              <div class="card-body p-0">
+                <p class="card-text hyphens font-weight-bold p-3 m-0">Power Board 0 / Power Unit 0 (left) not
+                  functioning properly</p>
+                <p class="card-text bg-light p-3 m-0" style="line-height: 1;"><small class="text-secondary">Henk de
+                    Jong &#65381; 22:24:20
+                    30/07/2019</small>
+                </p>
+                <div class="d-flex bg-white p-3 align-items-center">
+                  <span class="badge badge-yellow p-1 mr-2"><small class="large-small">Subtype</small><br>Run</span>
+                  <span class="badge badge-green p-1 mr-2"><small class="large-small">Origin</small><br>Human</span>
+                  <span class="badge badge-dark p-1 ml-auto" style="max-height: 20px;">#980</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="card shadow-sm">
+            <a href="#">
+              <div class="card-body p-0">
+                <p class="card-text hyphens font-weight-bold p-3 m-0">flpits1 is down and does not respond to any ping
+                </p>
+                <p class="card-text bg-light p-3 m-0" style="line-height: 1;"><small class="text-secondary">Karel
+                    Keizerman &#65381; 22:24:20
+                    30/07/2019</small>
+                </p>
+                <div class="d-flex bg-white p-3 align-items-center">
+                  <span class="badge badge-purple p-1 mr-2"><small class="large-small">Subtype</small><br>Comment</span>
+                  <span class="badge badge-green p-1 mr-2"><small class="large-small">Origin</small><br>Human</span>
+                  <span class="badge badge-dark p-1 ml-auto" style="max-height: 20px;">#979</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="card shadow-sm">
+            <a href="#">
+              <div class="card-body p-0">
+                <p class="card-text hyphens font-weight-bold p-3 m-0">IB temperature monitoring stopped working</p>
+                <p class="card-text bg-light p-3 m-0" style="line-height: 1;"><small class="text-secondary">Lange Frans
+                    &#65381; 22:24:20
+                    30/07/2019</small>
+                </p>
+                <div class="d-flex bg-white p-3 align-items-center">
+                  <span class="badge badge-yellow p-1 mr-2"><small class="large-small">Subtype</small><br>Run</span>
+                  <span class="badge badge-green p-1 mr-2"><small class="large-small">Origin</small><br>Human</span>
+                  <span class="badge badge-dark p-1 ml-auto" style="max-height: 20px;">#978</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- <div class="bg-info rounded p-3">
+        <form>
+          <div class="form-row">
+            <div class="col">
+              <label for="exampleInputEmail1">Id</label>
+              <input type="number" class="form-control" placeholder="ID">
+            </div>
+            <div class="col">
+              <label for="exampleInputEmail1">Title</label>
+              <input type="text" class="form-control" placeholder="Title">
+            </div>
+            <div class="col">
+              <label for="exampleInputEmail1">Start timestamp</label>
+              <input type="datetime-local" class="form-control" placeholder="Start date">
+            </div>
+            <div class="col">
+              <label for="exampleInputEmail1">End timestamp</label>
+              <input type="datetime-local" class="form-control" placeholder="End date">
+            </div>
+          </div>
+        </form>
+      </div> -->
+          <!-- <div class="bg-info p-3 rounded mt-4">
+          <table class="table table-bordered mb-0">
+            <thead class="bg-dark text-white">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Subtype</th>
+                <th scope="col">Origin</th>
+                <th scope="col">Timestamp</th>
+                <th scope="col">Author</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              <tr>
+                <th scope="row">1</th>
+                <td>faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet
+                  ultrices erat</td>
+                <td>comment</td>
+                <td>human</td>
+                <td>22:24:20 30/07/2019</td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet
+                  ultrices erat</td>
+                <td>comment</td>
+                <td>human</td>
+                <td>22:24:20 30/07/2019</td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet
+                  ultrices erat</td>
+                <td>comment</td>
+                <td>human</td>
+                <td>22:24:20 30/07/2019</td>
+                <td>12</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> -->
+        </div>
+        <div class="bg-light rounded p-1 undefined">
+          <div class="row">
+            <div class="small-center ml-auto mr-3">
+              <nav aria-label="Pages">
+                <ul class="pagination pagination-sm jf-pagination">
+                  <li class="page-item disabled"><a class="page-link">Previous</a></li>
+                  <li class="page-item active"><input type="hidden" id="page-selector-id" value="1"
+                      class="page-selector form-control form-control-sm">
+                    <div id="page-selector-label" data-toggle="tooltip" data-placement="bottom" title=""
+                      class="page-link page-selector-label" data-original-title="Click to manually select a page">1
+                    </div>
+                  </li>
+                  <li class="page-item"><a id="2" class="page-link">2</a></li>
+                  <li class="page-item"><a id="3" class="page-link">3</a></li>
+                  <li class="page-item disabled "><a class="page-link jf-page-non-link">of</a></li>
+                  <li class="page-item"><a id="63" class="page-link">63</a></li>
+                  <li class="page-item false"><a class="page-link">Next</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="darkness">
+      <div id="add-new-modal">
+        <span class="close">X</span>
+        <h2>Create new log</h2>
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" class="form-control bg-gray-light" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Select a subtype</label>
+            <select class="form-control bg-gray-light" id="exampleFormControlSelect1">
+              <option>Run</option>
+              <option>Comment</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control  bg-gray-light" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">File attachement</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+  </body>
+
+</html>

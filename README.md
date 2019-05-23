@@ -1,34 +1,87 @@
-# Project 3 @cmda-minor-web · 2018-2019
+<h1 align="center">Project 3 @cmda-minor-web 1819</h1>
 
-## Design for Real-Time
-Het project vindt plaats bij in ons eigen lokaal. Maandagochtend is om 9.30 uur de kickoff (bij de oprachtgever), vrijdag zijn de presentaties van de resultaten (bij de opdrachtgever). In een week bouwt iedere student een eigen prototype ter onderbouwing van aanbevelingen aan de opdrachtgevers (CERN & Lifely). De aanbevelingen betreffen het designen voor Real-Time web applicaties. Technieken geleerd bij [Web Design](https://github.com/cmda-minor-web/web-design-1819) en [Real-Time Web](https://github.com/cmda-minor-web/real-time-web-1819) worden toegepast bij het bouwen van de de prototypes en et schrijven van de aanbevelingen.
+<p align="center"><b>AS a user, I WANT to be able to use Jiskefet web application on all my devices
+SO I can search through all stored metadata.</p></b>
 
-## Programma
-Maandag - 9.30 - kickoff
-Woensdag - voortgangbespreking
-Vrijdag presentatie
+<br>
 
-## Werkwijze en Criteria
-### Werkwijze
-Full-time week werken aan prototypes / proof of concepts over designen voor real-time web applicaties. Vrijdag is de pitch! Student laat zien dat hij/zij de vakken [Web Design](https://github.com/cmda-minor-web/web-design-1819) en [Real-Time Web](https://github.com/cmda-minor-web/real-time-web-1819) begrijpt en beheerst.
+<p align="center">
+  <a href="http://jiskefet.webgaan.nl/">
+    <img src="https://img.shields.io/badge/demo-LIVE-brightgreen.svg?style=flat-square" alt="demo">
+  </a>
+</p> 
 
-Iedere dag zijn er coaches aanwezig voor coaching en feedback. We sluiten de dag af met een stand up, om de status door te spreken. Waar ben je mee bezig? Loop je ergens vast of heb je hulp nodig? Waar sta je?
+<br>
 
-### Beoordeling
-Tijdens de beoordeling krijg je feedback op het resultaat en op je functioneren. De vakdocenten beoordelen In hoeverre je in het project laten zien dat je de bijhorende vakken beheerst en goed hebt toegepast. De opdrachtgver is geïnteresseerd in hoeverre je oplossing voldoet aan de eisen die zijzelf stellen aan hun producten. Misschien laat je wel wat zien waar ze zelf nog niet aan gedacht hebben?
+![preview](github/preview.png)
 
-Het project telt als AVV mee met de Meesterproef.
+<br>
 
-### Feedback over functioneren
-Je hebt een leergierig, gedreven en zelfredzame houding nodig om de minor te kunnen halen. Welke vaardigheden heb je laten zien? Onderzoekend vermogen? Creativiteit? Conceptueel? In hoeverre komen je houding en verworven vaardigheden overeen met wat een frontender in de praktijk nodig heeft?
+<!-- ☝️ replace this description with a description of your own work -->
+## Introduction
+A reponsive redesign of the Jiskefet web application has been made as part of a course from [@cmda-minor-web 18-19](https://github.com/cmda-minor-web/project-3-1819).
 
-### Web Design
-Het vak [Web Design](https://github.com/cmda-minor-web/web-design-1819) gaat over het ontwerpen en testen van Interactie. Het voordeel van een Frontend Developer (of Web Designer) is dat die techniek begrijpt, kan toepassen én verstand heeft van UX en design. Als je Web technieken begrijpt kun je je ideeën snel prototypen en testen met echte gebruikers, in een browser. Je kan dan aanpassingen doorvoeren, uitproberen en weer testen
+Some resources possess an emoticon to help you understand which type of content you may find:
 
-### Real-Time Web
-Het vak [Real-Time Web](https://github.com/cmda-minor-web/real-time-web-1819) gaat over het bouwen van een betekenisvolle real-time applicatie. Hierin leer je hoe je een open verbinding (web socket) opzet tussen de client en de server. En hoe je in real-time data biede kanten op kunt versturen.
+- 📖: Documentation or article
+- 🛠: Tool, code or library
+- 📹: Video
 
-### Oplevering & criteria
-- Presentatie met je bevindingen bij de opdrachtgever. 
-- Github met je code en readme.
+<!-- Maybe a table of contents here? 📚 -->
+## Table of Contents
 
+- [Redesign](#learning-process)
+  - [Comparison](#comparison)
+    - [Desktop](#desktop)
+    - [Mobile](#mobile)
+  - [Changes](#changes)
+- [Sources](#sources)
+
+<!-- How about a section that describes how to install this project? 🤓 -->
+## Redesign
+A new application is being build for Cern, called Jiskefet. It stores a lot of logs that are being created by a system at Cern or by human input. the current design is made by back-end developers; meaning the design didn't get the attention it deserves.
+
+### Comparison
+The easiest way to notice the changes I made is by comparing the current design with the new redesign. I only show the initial load of the screen (without scrolling). The current design is on the left, and the redesign is on the right.
+
+#### Desktop
+
+![comparison](github/compare.png)
+
+#### Mobile 
+As you can see, the form is taking up the entire space of the initial screen load in the current design. This is fixed by removing the form and filtering on different ways.
+
+![comparison](github/compare-mobile.png)
+
+
+### Changes
+ * Added the main navigation to the header top bar
+ * Removed "create new log" from menu and implemented as a "dropdown" option in the header menu under "logs"
+ * Shortened menu names
+ * Removed the hamburger menu button
+ * Change of color palette (from dark to light)
+ * Added page title heading
+ * Removed the filter form
+ * Added tab menu for quick filtering (on all, human and process logs)
+ * Added button to add a new log
+ * Added filter button to filter on all timings (form will slide in from the right side on click)
+ * Added amount of results
+ * Added sorting option
+ * Added direct search (on title, id or description)
+ * Moved option to change results per page to the top of the results
+ * Changed design from tables to grid
+ * Changed author id to actual name
+ * Made it reponsive ;-)
+
+
+<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+## Wishlist
+- [ ] Redesign all pages
+
+<!-- Maybe I used some awesome sources that I can mention 🤔-->
+## Sources
+Underneath you will find all the sources that were previously mentioned throughout the document and some others which were helpful.
+
+> * 🛠 [Jiskefet](http://cmd.jiskefet.io)
+> * 📖 [Cern](https://home.cern/)
+> * 🛠 + 📖 [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
