@@ -45,6 +45,13 @@ A new application is being build for Cern, called Jiskefet. It stores a lot of l
 The easiest way to notice the changes I made is by comparing the current design with the new redesign. I only show the initial load of the screen (without scrolling). The current design is on the left, and the redesign is on the right.
 
 #### Desktop
+I removed the "Hamburger" slide in menu as it's not necessary to hide the menu. Hiding a menu is often bad design. I shortened the names inside the menu to be able to fit the menu on mobile phones without hiding it in a "hamburger". I also removed the "Create new log" from the menu. It doesn't make sense for it to be there; I implemented the option to create a new log by pressing the button called "Add log" on the logs page. I also implemented the "Add log" as a dropdown option in the header menu under the "Logs" page. Both options will open a modal with the form, instead of redirecting to a different page.
+
+The form to filter the results have been removed. Filtering is now done on a more efficient way, by using a tab menu or by direct search (one input field in which you can search for multiple things: id, title and description). Since filtering on timings take a lot of space and because those filter options are not always important, I added a "filter" button on the right side next to the "Add log" button. It will slide open a form on the right side of the screen.
+
+The most noticable difference is that I changed the design for the logs from tables to a grid; for responsive reasons, though tables aren't necessarely bad (on desktop). Something that would be a nice add-on is to make the user choose between a grid version or a table version, on desktop. You remove this option on mobile, it's always grid on mobile.
+
+Above is a quick summary of some changes that I made, which required some explanation. There are more changes, I created a list of all changes I implemented down below in the chapter called Changes.
 
 ![comparison](github/compare.png)
 
@@ -52,7 +59,6 @@ The easiest way to notice the changes I made is by comparing the current design 
 As you can see, the form is taking up the entire space of the initial screen load in the current design. This is fixed by removing the form and filtering on different ways.
 
 ![comparison](github/compare-mobile.png)
-
 
 ### Changes
  * Added the main navigation to the header top bar
